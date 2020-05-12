@@ -1,0 +1,69 @@
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h1 class="text-center">
+            Bem Vindo a nossa loja
+        </h1>
+    </div>
+</div>
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h3>Cadastrar novo produto</h3>
+
+            <div>
+                <div class="form-group">
+                  <label for="nome">Nome:</label>
+                  <input type="text" class="form-control" id="nome"  placeholder="Digite o nome do produto"[(ngModel)]="produto.nome">
+                </div>
+
+                <div class="form-group">
+                  <label for="preco">Preço:</label>
+                  <input type="number" class="form-control" id="preco" placeholder="Preço do produto" [(ngModel)]="produto.preco">
+                </div>
+
+                <div class="form-group">
+                    <label for="imagem">Imagem:</label>
+                    <input type="text" class="form-control" id="imagem" placeholder="Imagem do produto" [(ngModel)]="produto.imagem">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" class="form-control" id="quantidade" placeholder="Quantidade em estoque" [(ngModel)]="produto.qtdEstoque">
+                  </div>
+        
+                <button type="submit" class="btn btn-primary" (click)="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="mt-5 mb-5">
+
+
+<div class="row row-cols-4">
+    <div class="card-body" *ngFor="let produtos of listaProdutos">
+        <img class="card-img-top" src="{{produtos.imagem}}" alt="">
+        <div class="card-title">
+            {{produtos.nome}}
+        </div>
+
+        <div>
+            R$ {{produtos.preco}}
+        </div>
+
+        <div>
+            {{produtos.qtdEstoque}}
+        </div>
+        <button class="btn btn-outline-info mr-3" [routerLink]= "['/editar', produtos.id]">
+            Editar
+        </button>
+        <button class="btn btn-outline-danger mr-3" [routerLink]="['/deletar', produtos.id]">
+            Apagar
+        </button>
+
+    </div>
+</div>
+
+
